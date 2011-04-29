@@ -1,0 +1,73 @@
+
+<% unless @mail_template.blank? %>
+  <% form_for @mail_template, :url =>{ :action => "update", :id => @mail_template.id, :page => params[:page] } do |f| %>
+    <%= f.error_messages %>
+  
+    <%# タイトル %>
+    <%= f.label :title, t("mail_template.title") %>：<br />
+    <%= f.text_field :title, :class => "input_field_width_200" %><br />
+    
+    <br />
+
+<% if false %>
+    <%# From %>
+    <%= f.label :from, t("mail_template.from") %>：<br />
+    <%= f.text_field :from, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# To %>
+    <%= f.label :to, t("mail_template.to") %>：<br />
+    <%= f.text_field :to, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# Cc %>
+    <%= f.label :cc, t("mail_template.cc") %>：<br />
+    <%= f.text_field :cc, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# Bcc %>
+    <%= f.label :bcc, t("mail_template.bcc") %>：<br />
+    <%= f.text_field :bcc, :class => "input_field_width_300" %><br />
+    
+    <br />
+<% end %>
+
+    <%# Reply To %>
+    <%= f.label :reply_to, t("mail_template.reply_to") %>：<br />
+    <%= f.text_field :reply_to, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# Subject %>
+    <%= f.label :subject, t("mail_template.subject") %>：<br />
+    <%= f.text_field :subject, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# Body %>
+    <%= f.label :body, t("mail_template.body") %>：<br />
+    <%= f.text_area :body %><br />
+
+    <br />
+
+    <%= f.submit t("menu.save"), :disable_with => t("menu.save") %><br />
+  
+  <% end %>
+  
+  <br />
+  <br />
+  
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+    <%= link_to t("menu.show"), { :action => "show", :id => @mail_template.id, :page => params[:page] } %>
+  </span>
+  
+  <br />
+<% else %>
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+  </span>
+<% end %>

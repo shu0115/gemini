@@ -1,0 +1,23 @@
+
+<% unless @group.blank? %>
+  <table class="table_style">
+    <tr>
+      <th align="left"><%= t("group.name") %></th>
+      <td><%= @group.name %></td>
+    </tr>
+  </table>
+  
+  <br />
+  <br />
+  
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+    <%= link_to t("menu.edit"), { :action => "edit", :id => @group.id, :page => params[:page] } %>
+  </span>
+  
+  <br />
+<% else %>
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+  </span>
+<% end %>

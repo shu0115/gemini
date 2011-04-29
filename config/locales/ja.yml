@@ -1,0 +1,102 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ja:
+  # メニュー
+  menu:
+    title: Gemini
+    list: List
+    show: Show
+    edit: Edit
+    delete: Delete
+    new: New
+    top: Top
+    entry: Entry
+    public: Public
+    create: 作成
+    update: 更新
+    save: 保存
+    done: 完了
+    undo: 取消
+    send: 送信
+
+  entry:
+    edit: 変更
+    password: 現在のパスワード
+    edit_password: 変更するパスワード
+    edit_password_confirmation: 変更するパスワード(再入力)
+
+  # date_select対応
+  date:
+    order:
+    - :year
+    - :month
+    - :day
+
+  user:
+    login_id: ログインID
+    display_name: 表示名
+    level: レベル
+    twitter_id: Twitter ID
+    mail_address: メールアドレス
+    updated_at: 更新時刻
+    created_at: 作成時刻
+
+  activerecord:
+    attributes:
+      user:
+        login_id: ログインID
+        display_name: 表示名
+        level: レベル
+        twitter_id: Twitter ID
+        mail_address: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+    errors:
+      template:
+        header: エラー
+        body: ""
+
+  group:
+    name: グループ名
+    send_mail: 送信設定メール
+    member: メンバー
+
+  member:
+    name: メンバー名
+    mail_address: メールアドレス
+
+  sent_mail:
+    send: 送信
+    group: 宛先グループ
+    from: 差出人
+    to: 宛先
+    cc: Cc
+    bcc: Bcc
+    reply_to: 返信先
+    body: 内容
+    mail_send_at: 送信時刻
+    subject: 件名
+    result: 送信結果
+
+  mail_template:
+    title: テンプレート名
+    from: 差出人
+    to: 宛先
+    cc: Cc
+    bcc: Bcc
+    reply_to: 返信先
+    body: 内容
+    mail_send_at: 送信時刻
+    subject: 件名
+    result: 送信結果
+
+  event:
+    name: イベント名
+    mail_template: 返信メール
+
+  reception:
+    name: お名前
+    mail_address: メールアドレス
+    attend: 出欠席
+    mail_send_at: 送信時刻

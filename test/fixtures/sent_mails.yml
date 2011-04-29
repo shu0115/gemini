@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  from: MyString
+  to: MyString
+  cc: MyString
+  bcc: MyString
+  subject: MyString
+  body: MyText
+  reply_to: MyString
+  mail_send_at: 2011-04-25 11:21:38
+  result: MyText
+
+two:
+  from: MyString
+  to: MyString
+  cc: MyString
+  bcc: MyString
+  subject: MyString
+  body: MyText
+  reply_to: MyString
+  mail_send_at: 2011-04-25 11:21:38
+  result: MyText

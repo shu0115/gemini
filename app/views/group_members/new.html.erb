@@ -1,0 +1,26 @@
+
+<% form_for :member, :url => { :action => "create", :page => params[:page], :group_page => params[:group_page] } do |f| %>
+  <%= f.error_messages %>
+
+  <%# メンバー名 %>
+  <%= f.label :name, t("member.name") %>：<br />
+  <%= f.text_field :name, :class => "input_field_width_200" %><br />
+  
+  <br />
+
+  <%# メールアドレス %>
+  <%= f.label :mail_address, t("member.mail_address") %>：<br />
+  <%= f.text_field :mail_address, :class => "input_field_width_200" %><br />
+  
+  <br />
+
+  <%= f.hidden_field :group_id, { :value => params[:group_id] } %>
+  <%= f.submit t("menu.create"), :disable_with => t("menu.create") %><br />
+<% end %>
+
+<br />
+<br />
+
+<span class="menu">
+  <%= link_to t("menu.list"), { :action => "index", :group_id => params[:group_id], :page => params[:page], :group_page => params[:group_page] } %>
+</span>

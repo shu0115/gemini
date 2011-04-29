@@ -1,0 +1,38 @@
+
+<%# ページング %>
+<%= will_paginate @receptions, :previous_label => 'Prev', :next_label => 'Next' %>
+
+<table border="0">
+  <tr>
+    <% if false %>
+    <th>No.</th>
+    <% end %>
+    <th><%= t("event.name") %></th>
+    <th><%= t("reception.name") %></th>
+    <th><%= t("reception.mail_address") %></th>
+    <th><%= t("reception.attend") %></th>
+    <th><%= t("reception.mail_send_at") %></th>
+  </tr>
+
+<% @receptions.each_with_index do |reception, index| %>
+  <tr>
+    <% if false %>
+    <td><%=h index + 1 + @receptions.offset %></td>
+    <% end %>
+    <td><%=h Event.get_name( reception.event_id ) %></td>
+    <td><%=h reception.name %></td>
+    <td><%=h reception.mail_address %></td>
+    <td><%=h reception.attend %></td>
+    <td><%=h reception.mail_send_at.strftime("%Y/%m/%d %H:%M") unless reception.mail_send_at.blank? %></td>
+    <%# メニューボタン %>
+    <% if false %>
+    <td class="menu"><%= link_to t("menu.show"), :action => "show", :id => reception.id %></td>
+    <td class="menu"><%= link_to t("menu.edit"), :action => "edit", :id => reception.id %></td>
+    <td class="menu"><%= link_to t("menu.delete"), { :action => "destroy", :id => reception.id }, { :confirm => "「#{reception.name}」を削除します。\n本当によろしいですか？" } %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<%# ページング %>
+<%= will_paginate @receptions, :previous_label => 'Prev', :next_label => 'Next' %>

@@ -1,0 +1,32 @@
+<%# ページング %>
+<%= will_paginate @events, :previous_label => 'Prev', :next_label => 'Next', :params => { :action => "index" } %><br />
+
+<table>
+  <tr>
+    <th><%= t("event.name") %></th>
+    <th><%= t("event.mail_template") %></th>
+    <th><br /></th>
+    <th><br /></th>
+    <th><br /></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%=h event.name %></td>
+    <td><%=h MailTemplate.get_title( event.mail_template_id ) %></td>
+    <td class="menu"><%= link_to "受付フォーム", { :controller => "receptions", :action => "form", :id => event.id }, :target => "_blank" %></td>
+    <td class="menu"><%= link_to t("menu.show"), { :action => "show", :id => event.id, :page => params[:page] } %></td>
+    <td class="menu"><%= link_to t("menu.edit"), { :action => "edit", :id => event.id, :page => params[:page] } %></td>
+    <td class="menu"><%= link_to t("menu.delete"), { :action => "destroy", :id => event.id, :page => params[:page] }, :confirm => '本当に削除してよろしいですか？' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%# ページング %>
+<%= will_paginate @events, :previous_label => 'Prev', :next_label => 'Next', :params => { :action => "index" } %><br />
+
+<br />
+
+<span class="menu">
+  <%= link_to t("menu.new"), { :action => "new" } %>
+</span>

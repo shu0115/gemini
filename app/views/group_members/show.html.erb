@@ -1,0 +1,28 @@
+
+<% unless @member.blank? %>
+  <table class="table_style">
+    <tr>
+      <th align="left"><%= t("member.name") %></th>
+      <td><%= @member.name %></td>
+    </tr>
+
+    <tr>
+      <th align="left"><%= t("member.mail_address") %></th>
+      <td><%= @member.mail_address %></td>
+    </tr>
+  </table>
+  
+  <br />
+  <br />
+  
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page], :group_id => @member.group_id, :group_page => params[:group_page] } %>
+    <%= link_to t("menu.edit"), { :action => "edit", :id => @member.id, :page => params[:page], :group_page => params[:group_page] } %>
+  </span>
+  
+  <br />
+<% else %>
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :group_id => params[:group_id], :page => params[:page], :group_page => params[:group_page] } %>
+  </span>
+<% end %>

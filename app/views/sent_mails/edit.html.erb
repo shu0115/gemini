@@ -1,0 +1,65 @@
+
+<% unless @sent_mail.blank? %>
+  <% form_for @sent_mail, :url =>{ :action => "update", :id => @sent_mail.id, :page => params[:page] } do |f| %>
+    <%= f.error_messages %>
+  
+    <%# From %>
+    <%= f.label :from, t("sent_mail.from") %>：<br />
+    <%= f.text_field :from, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# To %>
+    <%= f.label :to, t("sent_mail.to") %>：<br />
+    <%= f.text_field :to, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# Cc %>
+    <%= f.label :cc, t("sent_mail.cc") %>：<br />
+    <%= f.text_field :cc, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# Bcc %>
+    <%= f.label :bcc, t("sent_mail.bcc") %>：<br />
+    <%= f.text_field :bcc, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# Subject %>
+    <%= f.label :subject, t("sent_mail.subject") %>：<br />
+    <%= f.text_field :subject, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# Reply To %>
+    <%= f.label :reply_to, t("sent_mail.reply_to") %>：<br />
+    <%= f.text_field :reply_to, :class => "input_field_width_300" %><br />
+    
+    <br />
+  
+    <%# Body %>
+    <%= f.label :body, t("sent_mail.body") %>：<br />
+    <%= f.text_area :body %><br />
+
+    <br />
+
+    <%= f.submit t("menu.save"), :disable_with => t("menu.save") %><br />
+  
+  <% end %>
+  
+  <br />
+  <br />
+  
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+    <%= link_to t("menu.show"), { :action => "show", :id => @sent_mail.id, :page => params[:page] } %>
+  </span>
+  
+  <br />
+<% else %>
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+  </span>
+<% end %>

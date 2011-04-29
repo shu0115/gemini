@@ -1,0 +1,52 @@
+
+<%# ページング %>
+<%= will_paginate @sent_mails, :previous_label => 'Prev', :next_label => 'Next', :params => { :action => "index" } %><br />
+
+<table>
+  <tr>
+    <th><%= t("sent_mail.group") %></th>
+    <th><%= t("sent_mail.reply_to") %></th>
+    <th><%= t("sent_mail.subject") %></th>
+    <th><%= t("sent_mail.mail_send_at") %></th>
+    <th><%= t("sent_mail.result") %></th>
+    <th><br /></th>
+<% if false %>
+    <th><%= t("sent_mail.from") %></th>
+    <th><%= t("sent_mail.to") %></th>
+    <th><%= t("sent_mail.cc") %></th>
+    <th><br /></th>
+    <th><br /></th>
+    <th>Bcc</th>
+    <th>Body</th>
+<% end %>
+  </tr>
+
+<% @sent_mails.each do |sent_mail| %>
+  <tr>
+    <td><%=h Group.get_name( sent_mail.group_id ) %></td>
+    <td><%=h sent_mail.reply_to %></td>
+    <td><%=h sent_mail.subject %></td>
+    <td><%=h sent_mail.mail_send_at %></td>
+    <td><%=h sent_mail.result %></td>
+    <td class="menu"><%= link_to t("menu.show"), { :action => "show", :id => sent_mail.id, :page => params[:page] } %></td>
+<% if false %>
+    <td><%=h sent_mail.from %></td>
+    <td><%=h sent_mail.to %></td>
+    <td><%=h sent_mail.cc %></td>
+    <td class="menu"><%= link_to t("menu.edit"), { :action => "edit", :id => sent_mail.id, :page => params[:page] } %></td>
+    <td class="menu"><%= link_to t("menu.delete"), { :action => "destroy", :id => sent_mail.id, :page => params[:page] }, :confirm => '本当に削除してよろしいですか？' %></td>
+    <td><%=h sent_mail.bcc %></td>
+    <td><%=h sent_mail.body %></td>
+<% end %>
+  </tr>
+<% end %>
+</table>
+
+<%# ページング %>
+<%= will_paginate @sent_mails, :previous_label => 'Prev', :next_label => 'Next', :params => { :action => "index" } %><br />
+
+<br />
+
+<span class="menu">
+  <%= link_to t("menu.new"), { :action => "new" } %>
+</span>

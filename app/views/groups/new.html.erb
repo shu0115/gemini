@@ -1,0 +1,19 @@
+
+<% form_for :group, :url => { :action => "create" } do |f| %>
+  <%= f.error_messages %>
+
+  <%# グループ名 %>
+  <%= f.label :name, t("group.name") %>：<br />
+  <%= f.text_field :name, :class => "input_field_width_200" %><br />
+  
+  <br />
+
+  <%= f.submit t("menu.create"), :disable_with => t("menu.create") %><br />
+<% end %>
+
+<br />
+<br />
+
+<span class="menu">
+  <%= link_to t("menu.list"), { :action => "index" } %>
+</span>

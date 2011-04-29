@@ -1,0 +1,32 @@
+<%# ページング %>
+<%= will_paginate @groups, :previous_label => 'Prev', :next_label => 'Next', :params => { :action => "index" } %><br />
+
+<table>
+  <tr>
+    <th><%= t("group.name") %></th>
+    <th><%= t("group.send_mail") %></th>
+    <th><br /></th>
+    <th><br /></th>
+    <th><br /></th>
+  </tr>
+
+<% @groups.each do |group| %>
+  <tr>
+    <td><%=h group.name %></td>
+    <td><%=h group.send_mail_id %></td>
+    <td class="menu"><%= link_to t("group.member"), { :controller => "group_members", :group_id => group.id, :group_page => params[:page] } %></td>
+    <td class="menu"><%= link_to t("menu.show"), { :action => "show", :id => group.id, :page => params[:page] } %></td>
+    <td class="menu"><%= link_to t("menu.edit"), { :action => "edit", :id => group.id, :page => params[:page] } %></td>
+    <td class="menu"><%= link_to t("menu.delete"), { :action => "destroy", :id => group.id, :page => params[:page] }, :confirm => '本当に削除してよろしいですか？' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%# ページング %>
+<%= will_paginate @groups, :previous_label => 'Prev', :next_label => 'Next', :params => { :action => "index" } %><br />
+
+<br />
+
+<span class="menu">
+  <%= link_to t("menu.new"), { :action => "new" } %>
+</span>

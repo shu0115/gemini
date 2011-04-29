@@ -1,0 +1,9 @@
+
+<% unless @members.blank? %>
+  <div class="member_list">
+    <% @members.each{ |member| %>
+      <%= member.name %><wbr />
+    <% } %>
+  </div><br />
+  <br />
+<% end %>

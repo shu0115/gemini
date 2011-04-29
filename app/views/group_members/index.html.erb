@@ -1,0 +1,39 @@
+
+<%# ページング %>
+<%= will_paginate @members, :previous_label => 'Prev', :next_label => 'Next', :params => { :action => "index" } %><br />
+
+<table>
+  <tr>
+    <th><%= t("member.name") %></th>
+    <th><%= t("member.mail_address") %></th>
+    <th><br /></th>
+    <th><br /></th>
+    <th><br /></th>
+  </tr>
+
+<% @members.each do |member| %>
+  <tr>
+    <td><%=h member.name %></td>
+    <td><%=h member.mail_address %></td>
+    <td class="menu"><%= link_to t("menu.show"), { :action => "show", :id => member.id, :page => params[:page], :group_page => params[:group_page] } %></td>
+    <td class="menu"><%= link_to t("menu.edit"), { :action => "edit", :id => member.id, :page => params[:page], :group_page => params[:group_page] } %></td>
+    <td class="menu"><%= link_to t("menu.delete"), { :action => "destroy", :id => member.id, :page => params[:page], :group_page => params[:group_page] }, :confirm => '本当に削除してよろしいですか？' %></td>
+  </tr>
+<% end %>
+</table>
+
+<%# ページング %>
+<%= will_paginate @members, :previous_label => 'Prev', :next_label => 'Next', :params => { :action => "index" } %><br />
+
+<br />
+
+<span class="menu">
+  <%= link_to t("menu.new"), { :action => "new", :page => params[:page], :group_id => params[:group_id], :group_page => params[:group_page] } %>
+</span>
+
+<br />
+<br />
+
+<span class="menu">
+  <%= link_to t("menu.list"), { :controller => "groups", :page => params[:group_page] } %>
+</span>

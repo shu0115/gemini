@@ -1,0 +1,77 @@
+
+<% unless @sent_mail.blank? %>
+  <table class="table_style">
+
+<% if false %>
+    <tr>
+      <th align="left"><%= t("sent_mail.from") %></th>
+      <td><%= @sent_mail.from %></td>
+    </tr>
+
+    <tr>
+      <th align="left"><%= t("sent_mail.to") %></th>
+      <td><%= @sent_mail.to %></td>
+    </tr>
+
+    <tr>
+      <th align="left"><%= t("sent_mail.cc") %></th>
+      <td><%= @sent_mail.cc %></td>
+    </tr>
+
+    <tr>
+      <th align="left"><%= t("sent_mail.bcc") %></th>
+      <td><%= @sent_mail.bcc %></td>
+    </tr>
+<% end %>
+
+    <%# 宛先グループ %>
+    <tr>
+      <th align="left"><%= t("sent_mail.group") %></th>
+      <td><%= Group.get_name( @sent_mail.group_id ) %></td>
+    </tr>
+
+    <%# 返信先 %>
+    <tr>
+      <th align="left"><%= t("sent_mail.reply_to") %></th>
+      <td><%= @sent_mail.reply_to %></td>
+    </tr>
+
+    <%# 件名 %>
+    <tr>
+      <th align="left"><%= t("sent_mail.subject") %></th>
+      <td><%= @sent_mail.subject %></td>
+    </tr>
+
+    <%# 送信時刻 %>
+    <tr>
+      <th align="left"><%= t("sent_mail.mail_send_at") %></th>
+      <td><%= @sent_mail.mail_send_at %></td>
+    </tr>
+
+    <%# 送信結果 %>
+    <tr>
+      <th align="left"><%= t("sent_mail.result") %></th>
+      <td><%= @sent_mail.result %></td>
+    </tr>
+
+    <%# 内容 %>
+    <tr>
+      <th align="left"><%= t("sent_mail.body") %></th>
+      <td><%= @sent_mail.body %></td>
+    </tr>
+  </table>
+  
+  <br />
+  <br />
+  
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+    <%#= link_to t("menu.edit"), { :action => "edit", :id => @sent_mail.id, :page => params[:page] } %>
+  </span>
+  
+  <br />
+<% else %>
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+  </span>
+<% end %>

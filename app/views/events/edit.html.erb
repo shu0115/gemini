@@ -1,0 +1,35 @@
+
+<% unless @event.blank? %>
+  <% form_for @event, :url =>{ :action => "update", :id => @event.id, :page => params[:page] } do |f| %>
+    <%= f.error_messages %>
+  
+    <%# イベント名 %>
+    <%= f.label :name, t("event.name") %>：<br />
+    <%= f.text_field :name, :class => "input_field_width_200" %><br />
+
+    <br />
+
+    <%# 返信メール %>
+    <%= f.label :mail_template_id, t("event.mail_template") %>：<br />
+    <%= f.select :mail_template_id, MailTemplate.all( :conditions => { :user_id => session[:user_id] }, :select => "id, title" ).map{ |t| [ t.title, t.id ] }, :selected => @event.mail_template_id %><br />
+
+    <br />
+
+    <%= f.submit t("menu.save"), :disable_with => t("menu.save") %><br />
+  
+  <% end %>
+  
+  <br />
+  <br />
+  
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+    <%= link_to t("menu.show"), { :action => "show", :id => @event.id, :page => params[:page] } %>
+  </span>
+  
+  <br />
+<% else %>
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+  </span>
+<% end %>

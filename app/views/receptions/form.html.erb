@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= t("menu.title") %></title>
+  <%= stylesheet_link_tag 'base' %>
+  <%= stylesheet_link_tag 'base_override' %>
+</head>
+
+<body>
+
+<br />
+
+<center>
+<% form_for @reception, :url => { :action => "reply" } do |f| %>
+<table>
+  <tr>
+    <td>
+      <%= f.label :name, t("reception.name") %>：<br />
+      <%= f.text_field :name, :class => "input_field_width_200" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= f.label :mail_address, t("reception.mail_address") %>：<br />
+      <%= f.text_field :mail_address, :class => "input_field_width_200" %>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <%= f.label :attend, t("reception.attend") %>：<br />
+      <%= f.select :attend, ["出席", "欠席"], :selected => @reception.attend %>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <br />
+      <%= f.hidden_field :event_id, { :value => @event_id } %>
+      <%= f.submit t("menu.send"), :disable_with => t("menu.send") %>
+    </td>
+  </tr>
+</table>
+<% end %>
+</center>
+
+</body>
+
+</html>

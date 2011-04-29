@@ -1,0 +1,86 @@
+
+<% form_for :sent_mail, :url => { :action => "new" } do |f| %>
+  <%# メールテンプレート %>
+  <%= f.label :mail_template_id, "メールテンプレート" %><br />
+  <%= f.select :mail_template_id, MailTemplate.all( :conditions => { :user_id => session[:user_id] }, :select => "id, title" ).map{ |t| [ t.title, t.id ] }, :selected => @sent_mail.mail_template_id %>
+
+  <%= f.submit "読込", :disable_with => "読込"%><br />
+<% end %>
+
+<br />
+<br />
+
+<% form_for :sent_mail, :url => { :action => "create" }, :html => { :id => "mail_form" } do |f| %>
+  <%= f.error_messages %>
+
+  <%# メールテンプレートID %>
+  <%= f.hidden_field :mail_template_id, { :value => @sent_mail.mail_template_id } %>
+
+  <%# 宛先グループ %>
+  <%= f.label :group_id, "宛先グループ" %><br />
+  <%= f.select :group_id, Group.all( :conditions => { :user_id => session[:user_id] }, :select => "id, name" ).map{ |g| [ g.name, g.id ] }, :selected => @sent_mail.group_id %>
+
+  <%= button_to_remote "メンバー確認", :update => "member_list", :submit => "mail_form", :url => { :action => "get_member" } %><br />
+
+  <div id="member_list"></div>
+
+  <br />
+
+<% if false %>
+  <%# From %>
+  <%= f.label :from, t("sent_mail.from") %>：<br />
+  <%= f.text_field :from, :class => "input_field_width_300" %><br />
+  
+  <br />
+
+  <%# To %>
+  <%= f.label :to, t("sent_mail.to") %>：<br />
+  <%= f.text_field :to, :class => "input_field_width_300" %><br />
+  
+  <br />
+
+  <%# Cc %>
+  <%= f.label :cc, t("sent_mail.cc") %>：<br />
+  <%= f.text_field :cc, :class => "input_field_width_300" %><br />
+  
+  <br />
+
+  <%# Bcc %>
+  <%= f.label :bcc, t("sent_mail.bcc") %>：<br />
+  <%= f.text_field :bcc, :class => "input_field_width_300" %><br />
+  
+  <br />
+<% end %>
+
+  <%# Reply To %>
+  <%= f.label :reply_to, t("sent_mail.reply_to") %>：<br />
+  <%= f.text_field :reply_to, :class => "input_field_width_300" %><br />
+  
+  <br />
+
+  <%# Subject %>
+  <%= f.label :subject, t("sent_mail.subject") %>：<br />
+  <%= f.text_field :subject, :class => "input_field_width_300" %><br />
+  
+  <br />
+
+  <%# Body %>
+  <%= f.label :body, t("sent_mail.body") %>：<br />
+  <%= f.text_area :body %><br />
+  
+  <br />
+
+  <%= check_box_tag "add_template", "YES", false %>
+  <%= label_tag "add_template", " テンプレート登録" %><br />
+
+  <br />
+
+  <%= f.submit t("sent_mail.send"), :disable_with => t("sent_mail.send") %><br />
+<% end %>
+
+<br />
+<br />
+
+<span class="menu">
+  <%= link_to t("menu.list"), { :action => "index" } %>
+</span>

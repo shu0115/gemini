@@ -1,0 +1,28 @@
+
+<% unless @event.blank? %>
+  <table class="table_style">
+    <tr>
+      <th align="left"><%= t("event.name") %></th>
+      <td><%= @event.name %></td>
+    </tr>
+
+    <tr>
+      <th align="left"><%= t("event.mail_template") %></th>
+      <td><%=h MailTemplate.get_title( @event.mail_template_id ) %></td>
+    </tr>
+  </table>
+  
+  <br />
+  <br />
+  
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+    <%= link_to t("menu.edit"), { :action => "edit", :id => @event.id, :page => params[:page] } %>
+  </span>
+  
+  <br />
+<% else %>
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+  </span>
+<% end %>

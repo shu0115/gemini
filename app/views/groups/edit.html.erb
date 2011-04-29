@@ -1,0 +1,29 @@
+
+<% unless @group.blank? %>
+  <% form_for @group, :url =>{ :action => "update", :id => @group.id, :page => params[:page] } do |f| %>
+    <%= f.error_messages %>
+  
+    <%# グループ名 %>
+    <%= f.label :name, t("group.name") %>：<br />
+    <%= f.text_field :name, :class => "input_field_width_200" %><br />
+
+    <br />
+
+    <%= f.submit t("menu.save"), :disable_with => t("menu.save") %><br />
+  
+  <% end %>
+  
+  <br />
+  <br />
+  
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+    <%= link_to t("menu.show"), { :action => "show", :id => @group.id, :page => params[:page] } %>
+  </span>
+  
+  <br />
+<% else %>
+  <span class="menu">
+    <%= link_to t("menu.list"), { :action => "index", :page => params[:page] } %>
+  </span>
+<% end %>
